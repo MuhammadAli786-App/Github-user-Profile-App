@@ -1,0 +1,173 @@
+.h1 {
+    margin-top: 50px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 45px;
+}
+
+.container {
+    margin: 20px auto;
+    width: 70%;
+}
+
+.search {
+    position: relative;
+    margin: 40px 0;
+}
+
+.search input {
+    width: 100%;
+    padding: 14px;
+    border: solid 1px #1E2A47;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: #1E2A47;
+    color: white;
+    font-size: 18px;
+}
+
+.search button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: solid 1px #0079FF;
+    background-color: #0079FF;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all ease 0.6s;
+}
+
+.search button:hover {
+    border: solid 1px #04428a;
+    background-color: #04428a;
+    color: whitesmoke;
+
+}
+
+.card {
+    background-color: #1E2A47;
+    padding: 10px;
+    border-radius: 8px;
+
+}
+
+
+
+
+.circle {
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.firstCon {
+    display: flex;
+    gap: 25px;
+}
+
+.firstCon h1 {
+    color: white;
+}
+
+.userLogin {
+    padding-top: 20px;
+    color: #0079FF !important;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.firstCon p {
+    padding-top: 20px;
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.repoCon {
+    width: 80%;
+    margin: 30px auto;
+    background-color: #141D2F;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.repoCon div p {
+    font-weight: 800;
+    font-size: 18px;
+    color: white;
+    padding: 4px 10px;
+    margin: 9px;
+}
+
+.repoCon div {
+    padding: 10px;
+}
+
+.otherInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+}
+
+.linkCon a {
+    color: white;
+    padding: 5px;
+    align-self: center !important;
+    text-decoration: none;
+    cursor: pointer !important;
+}
+
+.otherInfo div p {
+    color: white;
+    padding: 5px;
+    align-self: center !important;
+
+}
+
+.linkCon a:hover {
+    color: whitesmoke;
+    text-decoration: underline;
+
+}
+
+.dateCon {
+    padding: 8px;
+    flex-shrink: 0;
+}
+
+.errorContainer {
+    background-color: #1E2A47;
+    padding: 10px;
+    border-radius: 8px;
+    height: 300px;
+    color: whitesmoke;
+
+    text-align: center;
+}
+
+.errorContainer h1 {
+    margin-top: 70px;
+
+}
+
+.errorIcon {
+    align-self: center;
+    padding-top: 4px;
+}
