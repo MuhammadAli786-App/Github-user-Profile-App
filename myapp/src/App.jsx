@@ -189,22 +189,50 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1}>Search for a Github Profile</h1>
+      <header className={styles.hero}>
+        <h1 className={styles.h1}>GitHub Profile Search</h1>
+        <p className={styles.subtitle}>
+          Search any GitHub username to view detailed developer profiles and
+          public activity.
+        </p>
+      </header>
+
       <div className={styles.search}>
-        <input
-          type="text"
-          placeholder="Search Github User Name..."
-          onChange={(e) => setGithubUserName(e.target.value)}
-        />
-        <button onClick={searchUser}>Search</button>
+        <label htmlFor="github-user-search" className={styles.srOnly}>
+          Search GitHub username
+        </label>
+        <div className={styles.searchInputWrap}>
+          <span className={styles.searchIcon} aria-hidden="true">
+            <FaGithub />
+          </span>
+          <input
+            id="github-user-search"
+            type="text"
+            value={githubUserName}
+            placeholder="Search GitHub username..."
+            aria-label="Search GitHub username"
+            onChange={(e) => setGithubUserName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                searchUser();
+              }
+            }}
+          />
+          <button type="button" onClick={searchUser}>
+            Search
+          </button>
+        </div>
       </div>
 
       {error && (
         <div className={styles.errorContainer}>
-          <h1>
-            <FaTimesCircle className={styles.errorIcon} />
-            {error}
-          </h1>
+          <div className={styles.errorContent}>
+            <div className={styles.errorIconWrap} aria-hidden="true">
+              <FaTimesCircle />
+            </div>
+            <h2>{error}</h2>
+            <p>Try another username to look up a valid GitHub profile.</p>
+          </div>
         </div>
       )}
 
@@ -215,17 +243,19 @@ function App() {
               <img
                 src={userObj.avatar_url || profilePic}
                 onError={(e) => (e.target.src = profilePic)}
-                alt="profile"
+                alt={`${userObj.login || "GitHub user"} avatar`}
               />
             </div>
-            <div>
-              <h1>{userObj.name}</h1>
+
+            <div className={styles.userMeta}>
+              <h2 className={styles.name}>{userObj.name || userObj.login}</h2>
               <p className={styles.userLogin}>@{userObj.login}</p>
-              <p>{userObj.bio || "No bio available"}</p>
+              <p className={styles.bio}>{userObj.bio || "No bio available"}</p>
             </div>
+
             <div className={styles.dateCon}>
+              <span className={styles.dateLabel}>Joined</span>
               <p>
-                Joined:{" "}
                 {new Date(userObj.created_at).toLocaleDateString("en-US", {
                   day: "2-digit",
                   month: "long",
@@ -236,41 +266,41 @@ function App() {
           </div>
 
           <div className={styles.repoCon}>
-            <div>
+            <div className={styles.repoStat}>
               <p>Repositories</p>
-              <p>{userObj.public_repos}</p>
+              <span>{userObj.public_repos}</span>
             </div>
-            <div>
+            <div className={styles.repoStat}>
               <p>Followers</p>
-              <p>{userObj.followers}</p>
+              <span>{userObj.followers}</span>
             </div>
-            <div>
+            <div className={styles.repoStat}>
               <p>Following</p>
-              <p>{userObj.following}</p>
+              <span>{userObj.following}</span>
             </div>
           </div>
 
           <div className={styles.otherInfo}>
-            <div>
-              <p>
-                <span style={{ padding: "5px" }}>
-                  <FaMapMarkerAlt size={20} color="#0079FF" />
+            <div className={styles.infoGroup}>
+              <div className={styles.infoRow}>
+                <span className={styles.iconWrap}>
+                  <FaMapMarkerAlt />
                 </span>
-                {userObj.location || "Not Available"}
-              </p>
+                <span>{userObj.location || "Not Available"}</span>
+              </div>
 
-              <p>
-                <span style={{ padding: "5px" }}>
-                  <FaBuilding size={20} color="#0079FF" />
+              <div className={styles.infoRow}>
+                <span className={styles.iconWrap}>
+                  <FaBuilding />
                 </span>
-                {userObj.company || "Not Available"}
-              </p>
+                <span>{userObj.company || "Not Available"}</span>
+              </div>
             </div>
 
-            <div className={styles.linkCon}>
-              <p>
-                <span style={{ padding: "5px" }}>
-                  <FaLink size={20} color="#0079FF" />
+            <div className={styles.infoGroup}>
+              <div className={styles.infoRow}>
+                <span className={styles.iconWrap}>
+                  <FaLink />
                 </span>
                 {userObj.blog ? (
                   <a
@@ -285,13 +315,13 @@ function App() {
                     {userObj.blog}
                   </a>
                 ) : (
-                  "Not Available"
+                  <span>Not Available</span>
                 )}
-              </p>
+              </div>
 
-              <p>
-                <span style={{ padding: "5px" }}>
-                  <FaGithub size={20} color="#0079FF" />
+              <div className={styles.infoRow}>
+                <span className={styles.iconWrap}>
+                  <FaGithub />
                 </span>
                 {userObj.html_url ? (
                   <a
@@ -302,9 +332,9 @@ function App() {
                     {userObj.html_url}
                   </a>
                 ) : (
-                  "Not Available"
+                  <span>Not Available</span>
                 )}
-              </p>
+              </div>
             </div>
           </div>
         </div>

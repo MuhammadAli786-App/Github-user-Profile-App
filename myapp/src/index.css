@@ -1,12 +1,52 @@
+:root {
+  color-scheme: dark;
+  --bg-primary: #0b1220;
+  --bg-secondary: #141d2f;
+  --bg-card: #1e2a47;
+  --bg-card-alt: #121b2d;
+  --accent: #3d86ff;
+  --accent-strong: #0f6cf2;
+  --text-primary: #edf3ff;
+  --text-secondary: #b7c9eb;
+  --text-muted: #8aa0c7;
+  --border: rgba(143, 170, 219, 0.18);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+}
 
-
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #141D2F;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(61, 134, 255, 0.18), transparent 28%),
+    linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
+  font-family: "Roboto", "Segoe UI", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(61, 134, 255, 0.35);
+  color: var(--text-primary);
 }
